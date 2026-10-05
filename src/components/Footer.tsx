@@ -1,51 +1,48 @@
-import { Mail, Phone } from "lucide-react";
-import logo from "@/assets/logo-atenux.png";
 
 const Footer = () => (
-  <footer className="border-t py-16 bg-background">
-    <div className="container mx-auto px-6">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="Atenux" className="h-8 w-8" />
-            <span className="text-lg font-bold tracking-tight text-primary">Atenux</span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-            Tecnologia que conecta sua empresa aos seus clientes com inteligência e eficiência.
+  <footer className="site-footer">
+    <div className="site-container">
+      <div className="footer-top">
+        <div>
+          <a href="/" className="site-logo" aria-label="Atenux — início">
+            <img src="/atenux-conversa.png" alt="" width="34" height="34" />
+            <span>
+              atenux<span className="brand-period">.</span>
+            </span>
+          </a>
+          <p>
+            IA, pessoas e processos.
+            <br />
+            Juntos, em cada conversa.
           </p>
         </div>
-
-        <div className="space-y-4">
-          <h4 className="text-sm font-semibold text-foreground">Contato</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-accent shrink-0" />
-              <a href="tel:+5511936190935" className="hover:text-foreground transition-colors">(11) 93619-0935</a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-accent shrink-0" />
-              <a href="mailto:contato@atenux.com" className="hover:text-foreground transition-colors">contato@atenux.com</a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="space-y-4">
-          <h4 className="text-sm font-semibold text-foreground">Links</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><a href="#servicos" className="hover:text-foreground transition-colors">Serviços</a></li>
-            <li><a href="#diferenciais" className="hover:text-foreground transition-colors">Diferenciais</a></li>
-            <li><a href="#contato" className="hover:text-foreground transition-colors">Contato</a></li>
-            <li><a href="/privacy" className="hover:text-foreground transition-colors">Política de Privacidade</a></li>
-            <li><a href="/terms" className="hover:text-foreground transition-colors">Termos de Serviço</a></li>
-            <li><a href="/data-deletion" className="hover:text-foreground transition-colors">Exclusão de Dados</a></li>
-          </ul>
+        <nav aria-label="Links do rodapé">
+          <a href="/#servicos">A plataforma</a>
+          <a href="/#como-funciona">Como funciona</a>
+          <a href="/#contato">Contato</a>
+          <a href="https://chat.atenux.com">Entrar na Atenux</a>
+        </nav>
+        <div className="footer-contact">
+          <a href="mailto:contato@atenux.com">contato@atenux.com</a>
+          <a href="tel:+5592993531716">(92) 99353-1716</a>
         </div>
       </div>
-
-      <div className="border-t mt-12 pt-8 text-center">
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Atenux. Todos os direitos reservados.
-        </p>
+      <div className="footer-legal">
+        <p>© {new Date().getFullYear()} Atenux</p>
+        <nav aria-label="Informações legais">
+          <a href="/privacy.html">Privacidade</a>
+          <a href="/terms.html">Termos de uso</a>
+          <a href="/data-deletion.html">Exclusão de dados</a>
+        </nav>
+        <a
+          className="tribe-credit"
+          href="https://tribesolutions.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by <strong>TribeSolutions</strong>
+          <span className="sr-only"> (abre em nova aba)</span>
+        </a>
       </div>
     </div>
   </footer>

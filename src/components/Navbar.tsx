@@ -1,40 +1,80 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo-atenux.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const menuButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-      <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="Atenux" className="h-8 w-8" />
-          <span className="text-xl font-bold tracking-tight text-primary">Atenux</span>
+    <header className="site-header">
+      <nav
+        className="site-container nav-inner"
+        aria-label="Navegação principal"
+      >
+        <a href="/" className="site-logo" aria-label="Atenux — início">
+          <img src="/atenux-conversa.png" alt="" width="38" height="38" />
+          <span>
+            atenux<span className="brand-period">.</span>
+          </span>
         </a>
-
-        <div className="hidden md:flex items-center gap-8">
-          <a href="#servicos" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Serviços</a>
-          <a href="#diferenciais" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Diferenciais</a>
-          <a href="#contato" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contato</a>
-          <Button size="sm">Fale Conosco</Button>
+        <div className="desktop-nav">
+          <a href="/#servicos">A plataforma</a>
+          <a href="/#como-funciona">Como funciona</a>
+          <a href="/#duvidas">Dúvidas</a>
         </div>
-
-        <button className="md:hidden" onClick={() => setOpen(!open)}>
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        <div className="desktop-nav nav-actions">
+          <a href="https://chat.atenux.com">Entrar</a>
+          <a href="/#contato" className="site-button button-small">
+            Quero uma demonstração
+          </a>
+        </div>
+        <button
+          ref={menuButton}
+          className="mobile-menu-toggle"
+          type="button"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
         </button>
-      </div>
-
+      </nav>
       {open && (
-        <div className="md:hidden border-t bg-background px-6 py-4 flex flex-col gap-3">
-          <a href="#servicos" className="text-sm py-2" onClick={() => setOpen(false)}>Serviços</a>
-          <a href="#diferenciais" className="text-sm py-2" onClick={() => setOpen(false)}>Diferenciais</a>
-          <a href="#contato" className="text-sm py-2" onClick={() => setOpen(false)}>Contato</a>
-          <Button size="sm" className="w-full">Fale Conosco</Button>
-        </div>
+        <nav
+          id="mobile-navigation"
+          className="mobile-navigation"
+          aria-label="Navegação móvel"
+        >
+          <a href="/#servicos" onClick={() => setOpen(false)}>
+            A plataforma
+          </a>
+          <a href="/#como-funciona" onClick={() => setOpen(false)}>
+            Como funciona
+          </a>
+          <a href="/#duvidas" onClick={() => setOpen(false)}>
+            Dúvidas
+          </a>
+          <a href="https://chat.atenux.com">Entrar na Atenux</a>
+          <a
+            href="/#contato"
+            className="site-button"
+            onClick={() => setOpen(false)}
+          >
+            Quero uma demonstração
+          </a>
+        </nav>
       )}
-    </nav>
+    </header>
   );
 };
 

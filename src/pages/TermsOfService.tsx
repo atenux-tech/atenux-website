@@ -84,7 +84,7 @@ const TermsOfService = () => (
             <p>
               Para dúvidas sobre estes termos:<br />
               E-mail: <a href="mailto:contato@atenux.com" className="text-accent hover:underline">contato@atenux.com</a><br />
-              Telefone: <a href="tel:+5511936190935" className="text-accent hover:underline">(11) 93619-0935</a>
+              Telefone: <a href="tel:+5592993531716" className="text-accent hover:underline">(92) 99353-1716</a>
             </p>
           </section>
         </div>

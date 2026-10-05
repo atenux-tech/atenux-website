@@ -1,63 +1,58 @@
-import { Bot, Layers, Users, MessageCircle } from "lucide-react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { BookOpen, MessagesSquare, UserRoundCheck } from "lucide-react";
 
 const services = [
   {
-    icon: Layers,
-    title: "Canal Único Omnichannel",
+    icon: MessagesSquare,
+    title: "As conversas, juntas.",
     description:
-      "WhatsApp, Instagram, Webchat e Telegram — todos os canais unificados em uma só interface. Seus clientes escolhem onde falar; sua equipe responde de um único lugar, sem perder contexto.",
+      "Sua equipe atende os canais conectados em um só lugar, com histórico, contatos e notas internas. Mais contexto para continuar de onde o cliente parou.",
+    detail: "Canais e equipe na mesma operação",
   },
   {
-    icon: Bot,
-    title: "Agente Atena (IA)",
+    icon: BookOpen,
+    title: "A IA conhece seu negócio.",
     description:
-      "Nossa inteligência artificial faz o trabalho de vários atendentes humanos. A Atena resolve demandas de forma autônoma e só transfere para um especialista quando o assunto exige atenção humana.",
+      "A Atena responde com base nas informações que você disponibiliza, reúne os detalhes da solicitação e encaminha para a equipe quando é hora de uma pessoa assumir.",
+    detail: "Conhecimento e orientações da sua empresa",
   },
   {
-    icon: Users,
-    title: "CRM Inteligente",
+    icon: UserRoundCheck,
+    title: "O humano segue no controle.",
     description:
-      "Gerencie leads, oportunidades e clientes com automações que aceleram o ciclo de vendas e melhoram a retenção.",
+      "Sua equipe pode assumir a conversa, pausar a IA e continuar o atendimento. Na transferência, o histórico e o resumo interno ajudam a entender o que o cliente precisa.",
+    detail: "Continuidade entre IA e atendimento humano",
   },
 ];
 
-const Services = () => {
-  const ref = useScrollReveal();
-
-  return (
-    <section id="servicos" className="py-28 bg-background">
-      <div ref={ref} className="container mx-auto px-6">
-        <div className="max-w-xl mb-16 reveal">
-          <p className="text-sm font-semibold tracking-widest uppercase text-accent mb-3">
-            Serviços
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground leading-tight">
-            Soluções completas para comunicação empresarial
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((s, i) => (
-            <div
-              key={s.title}
-              className={`group rounded-2xl border bg-card p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 reveal reveal-delay-${i + 1}`}
-            >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                <s.icon className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="text-lg font-semibold mb-3 text-foreground">
-                {s.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">
-                {s.description}
-              </p>
-            </div>
-          ))}
-        </div>
+const Services = () => (
+  <section id="servicos" className="platform-section section-space">
+    <div className="site-container">
+      <div className="section-intro">
+        <h2>
+          Seu cliente não quer
+          <br />
+          começar tudo de novo.
+        </h2>
+        <p>
+          Ele quer ser entendido e ter o problema resolvido. A Atenux conecta
+          automação e atendimento humano para sua equipe dar o próximo passo com
+          contexto.
+        </p>
       </div>
-    </section>
-  );
-};
+      <div className="service-grid">
+        {services.map(({ icon: Icon, title, description, detail }) => (
+          <article className="service-item" key={title}>
+            <div className="service-icon">
+              <Icon size={25} strokeWidth={1.6} />
+            </div>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <span className="service-detail">{detail}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Services;
