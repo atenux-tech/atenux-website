@@ -38,7 +38,7 @@ const Footer = () => (
           className="tribe-credit"
           href="https://tribesolutions.com.br"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener"
         >
           Powered by <strong>TribeSolutions</strong>
           <span className="sr-only"> (abre em nova aba)</span>
